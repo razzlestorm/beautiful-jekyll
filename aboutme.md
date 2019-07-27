@@ -10,4 +10,4 @@ I am a Data Scientist, with a focus on Natural Language Processing. I used to wo
 
 ## My Goal
 
-I'm currently working on making a better version of myself (just like Frankenstein, what could go wrong?), that can do all my work for me while I lounge about in the sun. But NLP is complicated, so instead of lounging, I usually end up doing more research.
+I'm currently working on making a better version of myself (just like Frankenstein, what could go wrong?) that can do all my work for me while I lounge about in the sun. But NLP is complicated, so instead of lounging, I usually end up doing more research.
