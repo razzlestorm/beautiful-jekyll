@@ -1,16 +1,13 @@
 ---
 layout: page
-title: About me
-subtitle: Why you'd want to go on a date with me
+title: Data Scientist-in-training
+subtitle: Working with NLP to make my old job obsolete
 ---
 
-My name is Inigo Montoya. I have the following qualities:
-
-- I rock a great mustache
-- I'm extremely loyal to my family
+I am a Data Scientist, with a focus on Natural Language Processing. I used to work as a Chinese translator (I still do, but I used to, too), translating all sorts of books, movies, TV shows, and video games. In fact, if you've watched CCTV4, you've probably seen my subtitles! I've translated over 15 million words (and counting), so if you'd like to learn more about my work, feel free to contact me!
 
 What else do you need?
 
-### my history
+## My Goal
 
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+I'm currently working on making a better version of myself, that can do all my work for me while I lounge about in the sun. But NLP is complicated, so instead of lounging, I usually end up doing more research.
