@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Data Scientist-in-training
+title: Data Scientist
 subtitle: Working with NLP to make my old job obsolete
 ---
 
