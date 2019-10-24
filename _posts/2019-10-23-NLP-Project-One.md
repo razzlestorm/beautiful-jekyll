@@ -8,7 +8,7 @@ tags: [NLP]
 comments: true
 ---
 
-[Xinwen Lianbo Header](razzlestorm.github.io/img/header.jpg)
+[Xinwen Lianbo Header](../img/header.jpg)
 
 ## A Look into the Chinese Media
 I have a complicated relationship with the Chinese media. I've done work for CCTV in the past, and most of my translation clients have some sort of government ties.
