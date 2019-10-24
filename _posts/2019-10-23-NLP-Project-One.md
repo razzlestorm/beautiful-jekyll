@@ -105,7 +105,7 @@ The first pass with all 12,000 characters as a featureset is interesting to exam
 In the second pass, with a 5,000-character featureset, we see that 丁薛祥 (Ding Xuexiang, Xi Jinping's aide) and 杨洁篪 (Yang Jiechi, a key leader of China's foreign policy) are found in both featuresets. Interestingly, it appears that Xi Jinping himself (highlighted in green) appears throughout the dataset so much that he is 45 times more likely to appear in articles that aren't actually about him. The 中央办公厅 (the General Office of the CPC, highlighted in red) is also present in this featureset's 25 most important features, but was absent in the previous version's most important features.
 
 
-[!Most Informative Features with 5k](../img/Build1_informative2.png)
+![Most Informative Features with 5k](../img/Build1_informative2.png)
 
 
 |Informative People|
