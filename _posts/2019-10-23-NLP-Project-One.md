@@ -8,7 +8,7 @@ tags: [NLP]
 comments: true
 ---
 
-![Xinwen Lianbo Header](../img/header.jpg)
+![NLP Analysis of Chinese News](../img/header.jpg)
 
 
 ## A Look into the Chinese Media
