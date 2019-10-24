@@ -18,7 +18,7 @@ But as a Data Scientist, I wanted to perform an exploration of this, and see if 
 
 
 ## The Dataset
-The dataset I'm using was found on ![Kaggle](https://www.kaggle.com/noxmoon/chinese-official-daily-news-since-2016), and features every written news article published for use on the 新闻联播 program between January 1, 2016 to October 15, 2018. It has 4 columns: Date, Tag, Headline, and Content.
+The dataset I'm using was found on [Kaggle](https://www.kaggle.com/noxmoon/chinese-official-daily-news-since-2016), and features every written news article published for use on the 新闻联播 program between January 1, 2016 to October 15, 2018. It has 4 columns: Date, Tag, Headline, and Content.
 The Tag column differentiates the rows in the dataset between "“详细全文” some relatively long news, "国内“ domestic short news, "国际“ international short news."
 
 
@@ -68,11 +68,11 @@ The first pass with all 12,000 characters as a featureset is interesting to exam
 
 |Informative People|
 | ------------- |
-|![Ding Xuexiang](../img/Build1_Ding_Xuexiang.png)|
-|![Yang Jiechi](../img/Build1_Yang_Jiechi.png)|
-|![Fang Fenghui](../img/Build1_Fang_Fenghui.png)|
-|![Ma Xiaotian](../img/Build1_Ma_Xiaotian.png)|
-|![Zhao Keshi](../img/Build1_Zhao_Keshi.png)|
+|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="400" height="150">|
+|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="400" height="150">|
+|<img src="../img/Build1_Fang_Fenghui.png" alt="Fang Fenghui" width="400" height="150">|
+|<img src="../img/Build1_Ma_Xiaotian.png" alt="Ma Xiaotian" width="400" height="150">|
+|<img src="../img/Build1_Zhao_Keshi.png" alt="Zhao Keshi" width="400" height="150">|
 
 
 
@@ -81,10 +81,10 @@ In the second pass, with a 5,000-character featureset, we see that 丁薛祥 (Di
 
 |Informative People|
 | ------------- |
-|![Ding Xuexiang](../img/Build1_Ding_Xuexiang.png)|
-|![Yang Jiechi](../img/Build1_Yang_Jiechi.png)|
-|![Liu He](../img/Build1_Liu_He.png)|
-|<img src="../img/Build1_Wang_Huning.png" alt="Wang Huning" width="400" height="100"> |
+|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="400" height="150">|
+|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="400" height="150">|
+|<img src="../img/Build1_Liu_He.png" alt="Liu He" width="400" height="150">|
+|<img src="../img/Build1_Wang_Huning.png" alt="Wang Huning" width="400" height="150"> |
 
 
 **Models**
@@ -101,5 +101,4 @@ Most of these classifiers actually did improve upon the baseline, except for the
 ## Final Thoughts
 Overall, this was a very fun project, and first foray into Natural Language Processing. I learned a lot more than mentioned in this post, and will continue to write about unsupervised LDA models and similar concepts once I have a better grasp of them. As for this project, the next step could be to turn it into a filter of Xi Jinping-related news, or apply the techniques used here to filter out any topic one could want. It is also one step along the way of defining that vague concept of what it means for an article to be "about" someone or something, and handling it in a way that computers can understand.
 
-**All code used in this article is available here:** 
-![GitHub](https://github.com/razzlestorm/Lambda-Build-One)
+**All code used in this article is available here:**  [GitHub](https://github.com/razzlestorm/Lambda-Build-One)
