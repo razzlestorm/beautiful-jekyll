@@ -76,7 +76,7 @@ In the second pass, with a 5,000-character featureset, we see that 丁薛祥 (Di
 |![Ding Xuexiang](../img/Build1_Ding_Xuexiang.png)|
 |![Yang Jiechi](../img/Build1_Yang_Jiechi.png)|
 |![Liu He](../img/Build1_Liu_He.png)|
-|![Wang Huning](../img/Build1_Wang_Huning.png.png)|
+|<img src="../img/Build1_Wang_Huning.png" alt="Wang Huning" width="400" height="200"> |
 
 
 **Models**
@@ -93,4 +93,4 @@ Most of these classifiers actually did improve upon the baseline, except for the
 ## Final Thoughts
 Overall, this was a very fun project, and first foray into Natural Language Processing. I learned a lot more than mentioned in this post, and will continue to write about unsupervised LDA models and similar concepts once I have a better grasp of them. As for this project, the next step could be to turn it into a filter of Xi Jinping-related news, or apply the techniques used here to filter out any topic one could want. It is also one step along the way of defining that vague concept of what it means for an article to be "about" someone or something, and handling it in a way that computers can understand.
 
-
+**All code used in this article is available here:** ![GitHub](https://github.com/razzlestorm/Lambda-Build-One)
