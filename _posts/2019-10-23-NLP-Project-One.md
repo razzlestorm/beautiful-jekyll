@@ -41,75 +41,50 @@ This was typically a good enough measure for whether an article was truly about 
 
 **Results**
 ![Graph of Xi Jinping Mentions](razzlestorm.github.io/img/Build1_xi_graph.png)
+
+
 ![Ratio of Xi Mentions](razzlestorm.github.io/img/Build1_xi_ratio.png)
 
+We can see that the number of articles about Xi Jinping has generally been on the rise, but the rise for the time period around March specifically could just be random variation. If we had another year of data, it would be interesting to see if this rise continued, or if it was simple a slightly larger increase than the normal variation we see throughout the seasons of the rest of the years. 2.5 years isn't really a long enough time to observe definite trends in something as abstract as whether the media is trying to promote more positive pieces about the President.
+
+## Predictions with NLP Classifiers
+![Frequencies and Features](razzlestorm.github.io/img/Build1_freq_and_features.png)
+The dictionary keeping track of all the values was rather long, so I cut it down to only record words/phrases that appeared 20 times or more. Some of the top words we see throughout the dataset are '发展' (development), '中国' (China), '习近平' (Xi Jinping), '合作' (cooperation), etc. This isn't very surprising for a dataset of Chinese mainstream news articles.
+
+**Methodology**
+I was able to train NLTK's basic Naive Bayes classifier using all 12,000+ characters as a feature set, but ran into memory issues when training other classifiers, so ended up using just the top 5,000 character combinations as features. All 20738 of the articles were shuffled using random.shuffle, then the first 15,000 were used to train, resulting in roughly a 72/28 split for training and testing.
+
+**NLP Results**
+The first pass with all 12,000 characters as a featureset is interesting to examine because of the changes that occured when less characters were used. Most notably, some of the figures that strongly indicate an article is about Xi Jinping are different, and both 检阅台 (review/inspection platform) and 挥手致意 (waving to express regards/respect) are absent in 5k-character featureset's list of most informative features. Both of these terms (highlighted in red) are almost exclusively used to a review of the troops (typically done by Xi Jinping).
+![Most Informative Features with all 12k](razzlestorm.github.io/img/Build1_informative1.png)
+|Informative People|
+|![Ding Xuexiang](razzlestorm.github.io/img/Build1_Ding_Xuexiang.png)|
+|![Yang Jiechi](razzlestorm.github.io/img/Build1_Yang_Jiechi.png)|
+|![Fang Fenghui](razzlestorm.github.io/img/Build1_Fang_Fenghui.png)|
+|![Ma Xiaotian](razzlestorm.github.io/img/Build1_Ma_Xiaotian.png)|
+|![Zhao Keshi](razzlestorm.github.io/img/Build1_Zhao_Keshi.png)|
 
 
-You can write regular [markdown](http://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
-**Here is some bold text**
-
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
+In the second pass, with a 5,000-character featureset, we see that 丁薛祥 (Ding Xuexiang, Xi Jinping's aide) and 杨洁篪 (Yang Jiechi, a key leader of China's foreign policy) are found in both featuresets. Interestingly, it appears that Xi Jinping himself (highlighted in green) appears throughout the dataset so much that he is 45 times more likely to appear in articles that aren't actually about him. The 中央办公厅 (the General Office of the CPC, highlighted in red) is also present in this featureset's 25 most important features, but was absent in the previous version's most important features.
+![Most Informative Features with 5k](razzlestorm.github.io/img/Build1_informative2.png)
+|Informative People|
+|![Ding Xuexiang](razzlestorm.github.io/img/Build1_Ding_Xuexiang.png)|
+|![Yang Jiechi](razzlestorm.github.io/img/Build1_Yang_Jiechi.png)|
+|![Liu He](razzlestorm.github.io/img/Build1_Liu_He.png)|
+|![Wang Huning](razzlestorm.github.io/img/Build1_Wang_Huning.png.png)|
 
 
-How about a yummy crepe?
+**Models**
+The baseline of this dataset was 89.787%,  which is relatively high, but it turns out most of the articles in the dataset were not about Xi Jinping.
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
+Here's how each of the classifiers I used performed:
+1. Multinomial Naive Bayes: 92.646%
+2. Bernoulli Naive Bayes: 85.953%
+3. Logistic Regression: 95.904%
+4. Support Vector Clustering (SVC): 93.883%
 
-It can also be centered!
+Most of these classifiers actually did improve upon the baseline, except for the Bernoulli NB classifier, but I imagine with proper tweaking it might also be able to get better.
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .center-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-~~~
-
-And here is the same code with syntax highlighting:
-
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-```
-
-And here is the same code yet again but with line numbers:
-
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
-{% endhighlight %}
-
-## Boxes
-You can add notification, warning and error boxes like this:
-
-### Notification
-
-{: .box-note}
-**Note:** This is a notification box.
-
-### Warning
-
-{: .box-warning}
-**Warning:** This is a warning box.
-
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
+## Final Thoughts
+Overall, this was a very fun project, and first foray into Natural Language Processing. I learned a lot more than mentioned in this post, and will continue to write about unsupervised LDA models and similar concepts once I have a better grasp of them. As for this project, the next step could be to turn it into a filter of Xi Jinping-related news, or apply the techniques used here to filter out any topic one could want. It is also one step along the way of defining that vague concept of what it means for an article to be "about" someone or something, and handling it in a way that computers can understand.
