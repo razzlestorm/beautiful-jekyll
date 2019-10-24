@@ -14,7 +14,7 @@ comments: true
 ## A Look into the Chinese Media
 I have a complicated relationship with the Chinese media. I've done work for CCTV in the past, and most of my translation clients have some sort of government ties.
 Overall, I think that the daily news (新闻联播) that gets presented on CCTV is generally objective when it comes to international news. However, when it comes to domestic Chinese news, there can be more of an agenda. Having been a regular consumer of 新闻联播 before, I'm well aware of how the program will often shape a story to be very pro-China, and will often do fluff pieces on important figures.
-But as a Data Scientist, I wanted to perform an exploration of this, and see if there was actually any recognizable trends in how many fluff pieces (for Xi Jinping in particular) are produced over time.
+But as a Data Scientist, I wanted to perform an exploration of this, and see if there were any recognizable trends in how many fluff pieces (for Xi Jinping in particular) are produced over time.
 
 
 ## The Dataset
@@ -25,7 +25,7 @@ The Tag column differentiates the rows in the dataset between "“详细全文�
 ## Project Goals:
 1. Explore whether there is any sort of trend in positive news/fluff pieces about Xi Jinping (especially surrounding the time of the constitutional change).
 2. Come up with a way to predict whether a piece will be about Xi Jinping.
-3. Create a filter for fluff pieces about Xi Jinping (sometimes it can feel like you are being bombarded by them) (Future Work)
+3. Create a filter for fluff pieces about Xi Jinping (sometimes it can feel like you are being bombarded by propaganda) (Future Work)
 
 
 ## Data Exploration and Code
@@ -49,13 +49,13 @@ It had 20,738 rows with only 100 or so stories that repeated. Since these were a
 
   Before getting to the NLP aspect of the project, I wanted to see if there was perhaps an increase in Xi Jinping-friendly stories surrounding times when there may typically be negative public sentiment about him (specifically in March, when he changed to constitution to remove presidential term limits). This required me to "manually" determine if each news story was about Xi, an arduous task with over 20,000 rows of data.
   
-  So I counted the ratio of Xi Jinping (or Chairman Xi, Secretary Xi, etc.) mentions to the character count of an article, getting the percentage he was mentioned, and cross-referenced articles with high "Xi counts" with whether or not he is mentioned in the title. 
+  So I counted the ratio of mentions of Xi Jinping (or Chairman Xi, Secretary Xi, etc.) to the character count of an article, getting the percentage he was mentioned, and cross-referenced articles with high "Xi counts" with whether or not he is mentioned in the title. 
   
  
 ![Xi Count Example](../img/Build1_xi_count.png)
 
 
-  This was typically a good enough measure for whether an article was truly about Xi or not, which allowed me to tag it (for later use by NLP classifiers). I did do a manual count of about 2000 rows, and found 33 false positives. Logically, I didn't see how an article could be about Xi Jinping without actually mentioning him, so wasn't worried about articles with a Xi count of 0.0, and 33/2000 false positives is a good enough error that the rule seems alright.
+  This was typically a good enough measure for whether an article was truly about Xi or not, which allowed me to tag it (for later use by NLP classifiers). I did do a manual count of about 2,000 rows, and found 33 false positives. Logically, I didn't see how an article could be about Xi Jinping without actually mentioning him, so wasn't worried about false negatives in articles with a Xi count of 0.0, and 33/2000 false positives is a good enough error that the rule seems alright.
   
 
 **Results**
@@ -66,19 +66,21 @@ It had 20,738 rows with only 100 or so stories that repeated. Since these were a
 ![Ratio of Xi Mentions](../img/Build1_xi_ratio.png)
 
 
-  We can see that the number of articles about Xi Jinping has generally been on the rise, but the rise for the time period around March specifically could just be random variation. If we had another year of data, it would be interesting to see if this rise continued, or if it was simple a slightly larger increase than the normal variation we see throughout the seasons of the rest of the years. 2.5 years isn't really a long enough time to observe definite trends in something as abstract as whether the media is trying to promote more positive pieces about the President.
+  We can see that the number of articles about Xi Jinping varies throughout the year, but has generally been on the rise in 2018. However, the rise for the time period around March specifically could just be random variation. If we had another year of data, it would be interesting to see if this rise continued, or if it was simply a slightly larger increase than the normal variation we see throughout the seasons of the rest of the years. 2.5 years isn't really a long enough time to observe definite trends in something as abstract as whether the media is trying to promote more positive pieces about the President.
   
 
 ## Predictions with NLP Classifiers
 
 ![Frequencies and Features](../img/Build1_freq_and_features.png)
+
+
 The dictionary keeping track of all the values was rather long, so I cut it down to only record words/phrases that appeared 20 times or more. Some of the top words we see throughout the dataset are '发展' (development), '中国' (China), '习近平' (Xi Jinping), '合作' (cooperation), etc. This isn't very surprising for a dataset of Chinese mainstream news articles.
 
 
 **Methodology**
 
 
-I was able to train NLTK's basic Naive Bayes classifier using all 12,000+ characters as a feature set, but ran into memory issues when training other classifiers, so ended up using just the top 5,000 character combinations as features. All 20738 of the articles were shuffled using random.shuffle, then the first 15,000 were used to train, resulting in roughly a 72/28 split for training and testing.
+I was able to train NLTK's basic Naive Bayes classifier using all 12,000+ characters as a feature set, but ran into memory issues when training other classifiers, so ended up using just the top 5,000 character combinations as features. All 20,738 of the articles were shuffled using random.shuffle, then the first 15,000 were used to train, resulting in roughly a 72/28 split for training and testing.
 
 
 **NLP Results**
