@@ -30,15 +30,17 @@ The Tag column differentiates the rows in the dataset between "“详细全文�
 
 ## Data Exploration and Code
 To get started, here's a list of all the imports that were used in this project:
+
+
 ![List of Imports](../img/Build1_imports.png)
+
+
 Most of these are fairly standard for NLP, but one package that some might be unfamiliar with is ![jieba](https://github.com/fxsjy/jieba). Jieba is a popular tokenizer specifically for Chinese characters, and typically does a great job parsing which should be compound characters and which should not. It also allows you to add custom tokenization rules pretty easily, if something isn't parsing quite right.
 
 
 And this is typically what the data looked like:
 
-
 ![Example Row](../img/Build1_Example_Row.png)
-
 
 It had 20,738 rows with only 100 or so stories that repeated. Since these were all stories that did actually air, I decided to leave them in.
 
@@ -50,7 +52,7 @@ It had 20,738 rows with only 100 or so stories that repeated. Since these were a
   So I counted the ratio of Xi Jinping (or Chairman Xi, Secretary Xi, etc.) mentions to the character count of an article, getting the percentage he was mentioned, and cross-referenced articles with high "Xi counts" with whether or not he is mentioned in the title. 
   
  
-![Xi Count Example](razzlestorm.github.io/img/Build1_xi_count.png)
+![Xi Count Example](../img/Build1_xi_count.png)
 
 
   This was typically a good enough measure for whether an article was truly about Xi or not, which allowed me to tag it (for later use by NLP classifiers). I did do a manual count of about 2000 rows, and found 33 false positives. Logically, I didn't see how an article could be about Xi Jinping without actually mentioning him, so wasn't worried about articles with a Xi count of 0.0, and 33/2000 false positives is a good enough error that the rule seems alright.
@@ -90,11 +92,11 @@ The first pass with all 12,000 characters as a featureset is interesting to exam
 
 |Informative People|
 | ------------- |
-|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="400" height="150">|
-|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="400" height="150">|
-|<img src="../img/Build1_Fang_Fenghui.png" alt="Fang Fenghui" width="400" height="150">|
-|<img src="../img/Build1_Ma_Xiaotian.png" alt="Ma Xiaotian" width="400" height="150">|
-|<img src="../img/Build1_Zhao_Keshi.png" alt="Zhao Keshi" width="400" height="150">|
+|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="280" height="80">|
+|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="280" height="80">|
+|<img src="../img/Build1_Fang_Fenghui.png" alt="Fang Fenghui" width="280" height="80">|
+|<img src="../img/Build1_Ma_Xiaotian.png" alt="Ma Xiaotian" width="280" height="80">|
+|<img src="../img/Build1_Zhao_Keshi.png" alt="Zhao Keshi" width="280" height="80">|
 
 
 
@@ -106,10 +108,10 @@ In the second pass, with a 5,000-character featureset, we see that 丁薛祥 (Di
 
 |Informative People|
 | ------------- |
-|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="400" height="150">|
-|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="400" height="150">|
-|<img src="../img/Build1_Liu_He.png" alt="Liu He" width="400" height="150">|
-|<img src="../img/Build1_Wang_Huning.png" alt="Wang Huning" width="400" height="150"> |
+|<img src="../img/Build1_Ding_Xuexiang.png" alt="Ding Xuexiang" width="280" height="80">|
+|<img src="../img/Build1_Yang_Jiechi.png" alt="Yang Jiechi" width="280" height="80">|
+|<img src="../img/Build1_Liu_He.png" alt="Liu He" width="280" height="80">|
+|<img src="../img/Build1_Wang_Huning.png" alt="Wang Huning" width="280" height="80"> |
 
 
 **Models**
@@ -120,7 +122,7 @@ The baseline of this dataset was 89.787%,  which is relatively high, but it turn
 Here's how each of the classifiers I used performed:
 1. Multinomial Naive Bayes: 92.646%
 2. Bernoulli Naive Bayes: 85.953%
-3. Logistic Regression: 95.904%
+3. Logistic Regression: **95.904%**
 4. Support Vector Clustering (SVC): 93.883%
 
 
