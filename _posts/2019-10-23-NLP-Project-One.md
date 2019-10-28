@@ -86,7 +86,7 @@ I was able to train NLTK's basic Naive Bayes classifier using all 12,000+ charac
 **NLP Results**
 
 
-The first pass with all 12,000 characters as a featureset is interesting to examine because of the changes that occured when less characters were used. Most notably, some of the figures that strongly indicate an article is about Xi Jinping are different, and both 检阅台 (review/inspection platform) and 挥手致意 (waving to express regards/respect) are absent in 5k-character featureset's list of most informative features. Both of these terms (highlighted in red) are almost exclusively used to a review of the troops (typically done by Xi Jinping).
+The first pass with all 12,000 characters as a featureset is interesting to examine because of the changes that occurred when less characters were used. Most notably, some of the figures that strongly indicate an article is about Xi Jinping are different, and both 检阅台 (review/inspection platform) and 挥手致意 (waving to express regards/respect) are absent in 5k-character featureset's list of most informative features. Both of these terms (highlighted in red) are almost exclusively used during a review of the troops (typically done by Xi Jinping).
 
 
 ![Most Informative Features with all 12k](../img/Build1_informative1.png)
